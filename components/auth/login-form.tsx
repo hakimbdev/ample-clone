@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState } from "react"
-import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { AlertCircle } from "lucide-react"
+import { signIn } from "next-auth/react"
 
 export default function LoginForm() {
   const router = useRouter()

@@ -2,9 +2,10 @@ import type React from "react"
 import type { Metadata } from "next/types"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import Header from "@/components/header"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
+import HeaderWrapper from "@/components/header-wrapper"
+// import { SupabaseProvider } from "@/context/SupabaseProvider"
 import { AuthProvider } from "@/components/auth/auth-provider"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Header />
+          <HeaderWrapper />
           <main>{children}</main>
           <Footer />
           <WhatsAppButton />

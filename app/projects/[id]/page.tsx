@@ -236,6 +236,12 @@ const projects: Project[] = [
   },
 ]
 
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id.toString(),
+  }))
+}
+
 export default function ProjectDetail({ params }: { params: { id: string } }) {
   const project = projects.find((p) => p.id === Number.parseInt(params.id))
 

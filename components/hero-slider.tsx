@@ -85,32 +85,56 @@ const HeroSlider = () => {
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-            index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+            index === currentSlide
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-105 pointer-events-none"
           }`}
         >
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10" />
           <Image
             src={slide.image || "/placeholder.svg"}
             alt={slide.title}
             fill
-            className="object-cover"
+            className={`object-cover transition-transform duration-10000 ease-out ${
+              index === currentSlide ? "scale-110" : "scale-100"
+            }`}
             priority={index === 0}
           />
           <div className="relative z-20 h-full flex items-center">
             <div className="container mx-auto px-4">
-              <div className="max-w-xl">
-                <h2 className="text-white text-3xl md:text-4xl font-light mb-2">{slide.title}</h2>
-                <h1 className="text-white text-4xl md:text-5xl font-bold mb-4">{slide.subtitle}</h1>
-                <p className="text-white text-lg mb-8">{slide.description}</p>
+              <div className="max-w-xl transform transition-all duration-700 ease-out">
+                <h2
+                  className={`text-white text-3xl md:text-4xl font-light mb-2 transition-all duration-700 delay-100 ${
+                    index === currentSlide ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+                  }`}
+                >
+                  {slide.title}
+                </h2>
+                <h1
+                  className={`text-white text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 delay-200 ${
+                    index === currentSlide ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+                  }`}
+                >
+                  {slide.subtitle}
+                </h1>
+                <p
+                  className={`text-white text-lg mb-8 transition-all duration-700 delay-300 ${
+                    index === currentSlide ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+                  }`}
+                >
+                  {slide.description}
+                </p>
                 <Link
                   href={slide.buttonLink}
-                  className="inline-flex items-center bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 py-3 rounded"
+                  className={`inline-flex items-center bg-orange-500 hover:bg-orange-600 transition-all duration-700 delay-400 text-white px-6 py-3 rounded-md shadow-lg hover:shadow-orange-500/30 ${
+                    index === currentSlide ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                  }`}
                 >
                   {slide.buttonText}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-2"
+                    className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -129,25 +153,29 @@ const HeroSlider = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-4 bottom-1/2 z-30 bg-black/30 hover:bg-black/50 transition-colors text-white p-2 rounded-full"
+        className="absolute left-6 bottom-1/2 z-30 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-white p-3 rounded-full border border-white/20 shadow-lg transform -translate-y-1/2 hover:scale-110"
         aria-label="Previous slide"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 bottom-1/2 z-30 bg-black/30 hover:bg-black/50 transition-colors text-white p-2 rounded-full"
+        className="absolute right-6 bottom-1/2 z-30 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-white p-3 rounded-full border border-white/20 shadow-lg transform -translate-y-1/2 hover:scale-110"
         aria-label="Next slide"
       >
         <ChevronRight size={24} />
       </button>
 
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all ${index === currentSlide ? "bg-white w-6" : "bg-white/50"}`}
+            className={`transition-all duration-300 ${
+              index === currentSlide
+                ? "w-8 h-2 bg-orange-500 rounded-full"
+                : "w-2 h-2 bg-white/50 rounded-full hover:bg-white/80"
+            }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

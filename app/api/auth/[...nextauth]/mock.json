@@ -1,0 +1,15 @@
+{
+  "session": null,
+  "providers": [
+    {
+      "id": "credentials",
+      "name": "Credentials",
+      "type": "credentials"
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "type": "oauth"
+    }
+  ]
+}

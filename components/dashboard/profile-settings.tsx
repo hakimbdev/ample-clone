@@ -3,19 +3,24 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { AlertCircle, Camera } from "lucide-react"
 
 export default function ProfileSettings() {
-  const { data: session } = useSession()
+  // Mock user data for static export
+  const mockUser = {
+    name: "Demo User",
+    email: "demo@example.com",
+    image: "/placeholder.svg?height=128&width=128"
+  }
+
   const [isLoading, setIsLoading] = useState(false)
   const [successMessage, setSuccessMessage] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
 
   const [formData, setFormData] = useState({
-    name: session?.user?.name || "",
-    email: session?.user?.email || "",
+    name: mockUser.name,
+    email: mockUser.email,
     phone: "",
     address: "",
     city: "",
@@ -102,8 +107,8 @@ export default function ProfileSettings() {
           <div className="md:w-1/3 flex flex-col items-center mb-6 md:mb-0">
             <div className="relative h-32 w-32 rounded-full overflow-hidden mb-4">
               <Image
-                src={session?.user?.image || "/placeholder.svg?height=128&width=128"}
-                alt={session?.user?.name || "User"}
+                src={mockUser.image}
+                alt={mockUser.name}
                 fill
                 className="object-cover"
               />

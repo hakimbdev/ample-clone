@@ -16,6 +16,21 @@ const nextConfig = {
       },
     ],
   },
+  output: 'export',
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+    ],
+  },
+  trailingSlash: false,
+  // Skip API routes for static export
+  skipMiddlewareUrlNormalize: true,
+  skipTrailingSlashRedirect: true,
 }
 
 export default nextConfig

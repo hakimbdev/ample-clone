@@ -5,12 +5,16 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { LayoutDashboard, PieChart, Building, Bell, Menu, X, ChevronDown } from "lucide-react"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { data: session } = useSession()
+  // Mock user data for static export
+  const mockUser = {
+    name: "Demo User",
+    image: "/placeholder.svg?height=32&width=32"
+  }
+
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -42,8 +46,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       >
         <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold">
-              MIH<sup className="text-orange-500">^</sup>
+            <span className="text-sm font-bold">
+              Mams Innovative Homes
             </span>
           </Link>
           <button
@@ -76,8 +80,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 lg:bg-white">
         <div className="flex items-center h-16 px-4 border-b border-gray-200">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold">
-              MIH<sup className="text-orange-500">^</sup>
+            <span className="text-sm font-bold">
+              Mams Innovative Homes
             </span>
           </Link>
         </div>
@@ -121,14 +125,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex items-center space-x-3">
                 <div className="relative h-8 w-8 rounded-full overflow-hidden">
                   <Image
-                    src={session?.user?.image || "/placeholder.svg?height=32&width=32"}
-                    alt={session?.user?.name || "User"}
+                    src={mockUser.image}
+                    alt={mockUser.name}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <span className="hidden md:block text-sm font-medium text-gray-700">
-                  {session?.user?.name || "User"}
+                  {mockUser.name}
                 </span>
                 <ChevronDown size={16} className="text-gray-500" />
               </div>

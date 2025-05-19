@@ -1,11 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
-import HeroSlider from "@/components/hero-slider"
+import HeroWithNavbar from "@/components/hero-with-navbar"
 
 export default function Home() {
   return (
     <>
-      <HeroSlider />
+      <HeroWithNavbar />
 
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -207,16 +207,34 @@ const featuredProjects: Project[] = [
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
-      <div className="relative h-64">
-        <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-        <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
-          {project.status}
+    <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:shadow-orange-500/10 hover:-translate-y-1">
+      <div className="relative h-72 overflow-hidden">
+        <Image
+          src={project.image || "/placeholder.svg"}
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute top-4 right-4 z-10">
+          <span className={`
+            inline-block text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg
+            ${project.status === 'Ongoing' ? 'bg-orange-500' :
+              project.status === 'Completed' ? 'bg-green-500' :
+              'bg-orange-500'}
+          `}>
+            {project.status}
+          </span>
         </div>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <div className="flex items-center text-gray-600 mb-2">
+      <div className="p-6 relative">
+        <div className="absolute -top-10 right-6 bg-white rounded-full p-3 shadow-lg transform transition-transform duration-300 group-hover:translate-y-0 translate-y-10 opacity-0 group-hover:opacity-100">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors">{project.title}</h3>
+        <div className="flex items-center text-gray-600 mb-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 mr-1 text-orange-500"
@@ -231,15 +249,18 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </svg>
           {project.location}
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-gray-600">{project.type}</span>
-          <span className="font-bold text-orange-500">{project.price}</span>
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-gray-600 bg-gray-100 px-3 py-1 rounded-full text-sm">{project.type}</span>
+          <span className="font-bold text-orange-500 text-lg">{project.price}</span>
         </div>
         <Link
           href={`/projects/${project.id}`}
-          className="mt-4 inline-block w-full text-center bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 px-4 py-2 rounded"
+          className="mt-2 inline-flex justify-center items-center w-full bg-gray-100 hover:bg-orange-500 hover:text-white transition-all duration-300 text-gray-800 px-4 py-3 rounded-lg font-medium"
         >
           View Details
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
         </Link>
       </div>
     </div>
@@ -258,33 +279,74 @@ const features: Feature[] = [
     id: 1,
     title: "High Returns",
     description: "Our projects offer competitive returns on investment, ensuring your money grows.",
-    icon: "📈",
+    icon: "trending-up",
   },
   {
     id: 2,
     title: "Transparency",
     description: "We believe in complete transparency in all our dealings with our investors.",
-    icon: "🔍",
+    icon: "search",
   },
   {
     id: 3,
     title: "Expert Team",
     description: "Our team of experts has years of experience in the real estate industry.",
-    icon: "👥",
+    icon: "users",
   },
   {
     id: 4,
     title: "Innovation",
     description: "We leverage technology to provide a seamless investment experience.",
-    icon: "💡",
+    icon: "lightbulb",
   },
 ]
 
 const FeatureCard = ({ feature }: { feature: Feature }) => {
+  // Map feature icons to Lucide icon names
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'trending-up':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        );
+      case 'users':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        );
+      case 'lightbulb':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18h6"></path>
+            <path d="M10 22h4"></path>
+            <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-      <div className="text-4xl mb-4">{feature.icon}</div>
-      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+    <div className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:shadow-orange-500/10 hover:-translate-y-1 text-center">
+      <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-50 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+        {getIcon(feature.icon)}
+      </div>
+      <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors">{feature.title}</h3>
       <p className="text-gray-600">{feature.description}</p>
     </div>
   )
@@ -331,16 +393,15 @@ const testimonials: Testimonial[] = [
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg">
-      <div className="flex items-center mb-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-          <Image src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} fill className="object-cover" />
-        </div>
-        <div>
-          <h4 className="font-bold">{testimonial.name}</h4>
-          <p className="text-gray-600 text-sm">{testimonial.role}</p>
-        </div>
+    <div className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:shadow-orange-500/10 relative">
+      <div className="absolute -top-5 right-8 text-orange-500 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.626.41-2.032.76-1.018 1.058-1.733.906-2.141-.13-.406-.455-.662-.97-.766l-.814-.23c-.647-.176-1.415.006-2.003.55-.587.54-1.004 1.108-1.248 1.705-.243.596-.363 1.18-.36 1.75.006.57.094 1.094.265 1.575.17.48.394.895.67 1.243.274.35.56.638.856.867.297.23.59.394.878.496.288.1.522.173.702.217.18.042.29.072.33.09.38.106.77.183 1.177.23.41.05.816.06 1.22.036.405-.026.763-.1 1.075-.23.31-.13.582-.29.814-.49.232-.192.4-.43.51-.71.108-.282.164-.55.164-.806zm7.842 0c0-.88-.23-1.618-.69-2.217-.326-.42-.77-.692-1.327-.812-.55-.124-1.07-.13-1.54-.022-.16-.94.09-1.615.39-2.022.76-1.02 1.058-1.734.906-2.143-.13-.408-.455-.664-.97-.768l-.814-.23c-.646-.176-1.415.006-2.003.55-.587.54-1.004 1.108-1.248 1.705-.243.596-.363 1.18-.36 1.75.006.57.094 1.094.265 1.575.17.48.394.895.67 1.243.274.35.56.638.856.867.297.23.59.394.878.496.288.1.522.173.702.217.18.042.29.072.33.09.38.106.77.183 1.177.23.41.05.816.06 1.22.036.405-.026.763-.1 1.075-.23.31-.13.582-.29.814-.49.232-.192.4-.43.51-.71.108-.282.164-.55.164-.806z" />
+        </svg>
       </div>
+
+      <p className="text-gray-600 italic mb-6 relative z-10">"{testimonial.comment}"</p>
+
       <div className="flex mb-4">
         {[...Array(5)].map((_, i) => (
           <svg
@@ -354,7 +415,16 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
           </svg>
         ))}
       </div>
-      <p className="text-gray-600 italic">"{testimonial.comment}"</p>
+
+      <div className="flex items-center pt-4 border-t border-gray-100">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4 ring-2 ring-orange-500/10 group-hover:ring-orange-500/30 transition-all">
+          <Image src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} fill className="object-cover" />
+        </div>
+        <div>
+          <h4 className="font-bold group-hover:text-orange-500 transition-colors">{testimonial.name}</h4>
+          <p className="text-gray-600 text-sm">{testimonial.role}</p>
+        </div>
+      </div>
     </div>
   )
 }

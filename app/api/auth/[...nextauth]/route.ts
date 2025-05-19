@@ -2,6 +2,19 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 
+export const dynamic = "force-static"
+
+export function generateStaticParams() {
+  return [
+    { nextauth: ["session"] },
+    { nextauth: ["signin"] },
+    { nextauth: ["signout"] },
+    { nextauth: ["callback"] },
+    { nextauth: ["verify-request"] },
+    { nextauth: ["error"] }
+  ]
+}
+
 // This is a mock user database - in a real application, you would use a proper database
 const users = [
   {

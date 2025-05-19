@@ -1,12 +1,14 @@
 "use client"
 
-import { useSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { TrendingUp, DollarSign, Clock, ArrowRight } from "lucide-react"
 
 export default function DashboardOverview() {
-  const { data: session } = useSession()
+  // Mock user data for static export
+  const mockUser = {
+    name: "Demo User"
+  }
 
   // Mock data for the dashboard
   const stats = [
@@ -73,7 +75,7 @@ export default function DashboardOverview() {
   return (
     <div className="space-y-6">
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-4">Welcome back, {session?.user?.name || "Investor"}!</h2>
+        <h2 className="text-lg font-medium text-gray-900 mb-4">Welcome back, {mockUser.name}!</h2>
         <p className="text-gray-600">
           Here's an overview of your investment portfolio and recent activities. Track your investments, monitor
           returns, and discover new opportunities.

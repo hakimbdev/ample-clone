@@ -1,7 +1,4 @@
 import type { Metadata } from "next"
-import { getServerSession } from "next-auth/next"
-import { redirect } from "next/navigation"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import DashboardLayout from "@/components/dashboard/dashboard-layout"
 import DashboardOverview from "@/components/dashboard/dashboard-overview"
 
@@ -10,13 +7,8 @@ export const metadata: Metadata = {
   description: "Manage your real estate investments and track your portfolio performance",
 }
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
-
-  if (!session) {
-    redirect("/login")
-  }
-
+// For static export, we're removing server-side authentication
+export default function DashboardPage() {
   return (
     <DashboardLayout>
       <DashboardOverview />

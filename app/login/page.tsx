@@ -6,12 +6,10 @@ export const metadata: Metadata = {
   description: "Login to your MIH account to manage your real estate investments",
 }
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams: { registered?: string; callbackUrl?: string }
-}) {
-  const isNewUser = searchParams.registered === "true"
+// For static export, we're removing searchParams usage
+export default function LoginPage() {
+  // Static version doesn't use searchParams
+  const isNewUser = false
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
