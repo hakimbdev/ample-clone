@@ -17,19 +17,9 @@ const nextConfig = {
     ],
   },
   output: 'export',
-  images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        pathname: '/**',
-      },
-    ],
-  },
-  trailingSlash: false,
-  // Skip API routes for static export
-  skipMiddlewareUrlNormalize: true,
+  trailingSlash: true,
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://mams.com.ng' : '',
+  basePath: '',
   skipTrailingSlashRedirect: true,
 }
 

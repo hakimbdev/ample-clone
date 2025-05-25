@@ -2,11 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+// Ensure we're in production mode
+process.env.NODE_ENV = 'production';
+process.env.NEXT_PUBLIC_SITE_URL = 'https://mams.com.ng';
+
 console.log('Starting Netlify build process...');
 
-// Run Next.js build
+// Run Next.js build and export
 console.log('Building Next.js application...');
-execSync('npx next build', { stdio: 'inherit' });
+execSync('npm run build', { stdio: 'inherit' });
 
 // Create _redirects file in the out directory
 console.log('Creating Netlify _redirects file in the out directory...');
