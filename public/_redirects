@@ -1,0 +1,24 @@
+# Force HTTPS
+http://mams.com.ng/* https://mams.com.ng/:splat 301!
+http://www.mams.com.ng/* https://mams.com.ng/:splat 301!
+https://www.mams.com.ng/* https://mams.com.ng/:splat 301!
+
+# Redirect Netlify subdomain to custom domain
+http://mamsrealestate.netlify.app/* https://mams.com.ng/:splat 301!
+https://mamsrealestate.netlify.app/* https://mams.com.ng/:splat 301!
+
+# Handle Next.js static assets
+/_next/* /_next/:splat 200
+
+# Handle Next.js dynamic routes
+/api/* /api/:splat 200
+/dashboard/* /dashboard/:splat 200
+/projects/* /projects/:splat 200
+/about/* /about/:splat 200
+/contact/* /contact/:splat 200
+/login/* /login/:splat 200
+/register/* /register/:splat 200
+/media/* /media/:splat 200
+
+# SPA fallback
+/* /index.html 200
