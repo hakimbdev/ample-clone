@@ -218,7 +218,11 @@ const team = [
   {
     id: 3,
     name: "Michael Eze",
+<<<<<<< HEAD
     role: "Quantity Survey Team Lead",
+=======
+    role: "Head of Technology",
+>>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
     bio: "Michael leads our technology initiatives, ensuring we leverage the latest innovations.",
     image: "/placeholder.svg?height=300&width=300",
   },
