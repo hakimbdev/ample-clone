@@ -13,7 +13,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Mams Innovative Homes",
   description: "We create real estate investment opportunities that delivers great value and returns",
-<<<<<<< HEAD
   generator: 'v0.dev',
   icons: {
     icon: {
@@ -22,9 +21,6 @@ export const metadata: Metadata = {
       type: "image/png",
     },
   },
-=======
-    generator: 'v0.dev'
->>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
 }
 
 export default function RootLayout({
