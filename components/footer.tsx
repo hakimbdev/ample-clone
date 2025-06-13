@@ -114,12 +114,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start group">
                 <MapPin size={18} className="mr-3 mt-1 text-orange-500 group-hover:text-orange-400 transition-colors" />
-<<<<<<< HEAD
-                <span className="text-gray-400 group-hover:text-gray-300 transition-colors">SUITE 302A BAHAMAS PLAZA, PLOT 1080 JOSEPH GOMWALK STREET GUDU DISTRICT, ABUJA.</span>
-=======
-                <span className="text-gray-400 group-hover:text-gray-300 transition-colors">No. 25 Ajayi Crowther Street, Asokoro Quarters,
-                Federal Capital Territory, Nigeria.</span>
->>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
+                <span className="text-gray-400 group-hover:text-gray-300 transition-colors">SUITE 302A BAHAMAS PLAZA, PLOT 1080 JOSEPH GOMWALK STREET GUDU DISTRICT, ABUJA.</span>
               </li>
               <li className="flex items-center group">
                 <Phone size={18} className="mr-3 text-orange-500 group-hover:text-orange-400 transition-colors" />

@@ -42,7 +42,6 @@ export default function Media() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {galleryItems.map((item) => (
                   <div key={item.id} className="relative h-64 rounded-lg overflow-hidden">
-<<<<<<< HEAD
                     {item.type === "image" ? (
                       <Image
                         src={item.image || "/placeholder.svg?height=300&width=400"}
@@ -61,14 +60,6 @@ export default function Media() {
                         muted
                       />
                     )}
-=======
-                    <Image
-                      src={item.image || "/placeholder.svg?height=300&width=400"}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform hover:scale-110"
-                    />
->>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
                   </div>
                 ))}
               </div>
@@ -283,19 +274,14 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
 interface GalleryItem {
   id: number
   title: string
-<<<<<<< HEAD
   image?: string
   videoUrl?: string
   type: "image" | "video"
-=======
-  image: string
->>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
 }
 
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-<<<<<<< HEAD
     title: "WhatsApp Video 2025-06-13",
     videoUrl: "https://res.cloudinary.com/dc5qncppu/video/upload/v1749818151/WhatsApp_Video_2025-06-13_at_10.24.28_67f63629_ghjnzp.mp4",
     type: "video",
@@ -347,49 +333,5 @@ const galleryItems: GalleryItem[] = [
     title: "WhatsApp Image 2025-05-19 (4)",
     image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1749818143/WhatsApp_Image_2025-05-19_at_19.27.08_7f5b0bf7_t2zh0i.jpg",
     type: "image",
-=======
-    title: "MIH Heights Construction",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 2,
-    title: "MIH Towers Completion",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 3,
-    title: "MIH Team at Work",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 4,
-    title: "MIH Gardens Design",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 5,
-    title: "MIH Plaza Construction",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 6,
-    title: "MIH Residences Interior",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 7,
-    title: "MIH Business Park Design",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 8,
-    title: "MIH Team Meeting",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 9,
-    title: "MIH Awards Ceremony",
-    image: "/placeholder.svg?height=300&width=400",
->>>>>>> f48f83fdc3f5085246afb650f5f71307264236f9
   },
 ]
