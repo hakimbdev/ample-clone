@@ -1,6 +1,4 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import GoogleProvider from "next-auth/providers/google"
+import { NextRequest, NextResponse } from "next/server"
 
 export const dynamic = "force-static"
 
@@ -15,80 +13,35 @@ export function generateStaticParams() {
   ]
 }
 
-// This is a mock user database - in a real application, you would use a proper database
-const users = [
-  {
-    id: "1",
-    name: "Demo User",
-    email: "user@exMIH.com",
-    // This is "password123"
-    password: "password123",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-]
-
-export const authOptions = {
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    }),
-    CredentialsProvider({
-      name: "Credentials",
+// Static responses for static export
+export async function GET(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+  
+  if (pathname.includes("/api/auth/session")) {
+    return NextResponse.json({
+      user: null,
+      expires: "2099-01-01T00:00:00.000Z"
+    })
+  }
+  
+  if (pathname.includes("/api/auth/providers")) {
+    return NextResponse.json({
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        id: "credentials",
+        name: "Credentials",
+        type: "credentials"
       },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null
-        }
-
-        const user = users.find((user) => user.email === credentials.email)
-        if (!user) {
-          return null
-        }
-
-        // In a real application, you would verify the password against a hashed version in your database
-        const isPasswordValid = user.password === credentials.password
-        if (!isPasswordValid) {
-          return null
-        }
-
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        }
-      },
-    }),
-  ],
-  pages: {
-    signIn: "/login",
-    signOut: "/",
-    error: "/login",
-  },
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
+      google: {
+        id: "google",
+        name: "Google",
+        type: "oauth"
       }
-      return token
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id
-      }
-      return session
-    },
-  },
-  session: {
-    strategy: "jwt",
-  },
-  secret: process.env.NEXTAUTH_SECRET || "your-secret-key",
+    })
+  }
+  
+  return NextResponse.json({ error: "Not found" }, { status: 404 })
 }
 
-const handler = NextAuth(authOptions)
-
-export { handler as GET, handler as POST }
+export async function POST(request: NextRequest) {
+  return NextResponse.json({ error: "Authentication not available in static export" }, { status: 501 })
+}

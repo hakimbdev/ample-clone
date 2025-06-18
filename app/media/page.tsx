@@ -107,19 +107,19 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    title: "MIH Launches New Residential Project in Lekki",
-    date: "April 15, 2023",
+    title: "MIH Launches New Residential Project in Karmo",
+    date: "April 15, 2025",
     excerpt:
       "MIH has launched a new residential project in Abuja. The project, MIH Heights, offers luxury apartments with modern amenities.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1749818145/WhatsApp_Image_2025-06-13_at_10.24.12_ccf79559_q9hzd6.jpg",
   },
   {
     id: 2,
     title: "MIH Wins Real Estate Investment Company of the Year Award",
-    date: "March 10, 2023",
+    date: "March 10, 2024",
     excerpt:
       "MIH has been recognized as the Real Estate Investment Company of the Year at the prestigious Real Estate Excellence Awards.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1749899636/Happy_New_Year_2_zkw96g.png",
   },
   {
     id: 3,
@@ -127,7 +127,7 @@ const newsItems: NewsItem[] = [
     date: "February 22, 2023",
     excerpt:
       "MIH has completed its commercial project, MIH Towers, ahead of schedule, delivering exceptional quality and value to investors.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1746004469/mih1_mpybaj.jpg",
   },
   {
     id: 4,
@@ -135,15 +135,15 @@ const newsItems: NewsItem[] = [
     date: "January 15, 2023",
     excerpt:
       "MIH has partnered with a leading financial institution to provide flexible financing options for investors in its real estate projects.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1746004468/mams_innnnovative_homes_tmg0gf.jpg",
   },
   {
     id: 5,
-    title: "MIH Expands Operations to Abuja",
-    date: "December 5, 2022",
+    title: "MIH Expands Operations to Jabi",
+    date: "December 5, 2024",
     excerpt:
       "MIH has expanded its operations to Abuja, Nigeria's capital city, with plans to launch new projects in the coming months.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936949/WhatsApp_Image_2025-01-28_at_10.20.57_fca8f466_xdsa20.jpg",
   },
   {
     id: 6,
@@ -151,7 +151,7 @@ const newsItems: NewsItem[] = [
     date: "November 18, 2022",
     excerpt:
       "MIH has introduced an innovative investment platform that makes it easier for investors to participate in real estate projects.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
   },
 ]
 
@@ -193,7 +193,7 @@ const blogPosts: BlogPost[] = [
     author: "John Adeyemi",
     date: "April 20, 2023",
     excerpt: "Explore the future trends and opportunities in Nigeria's real estate investment landscape.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Investment",
   },
   {
@@ -202,7 +202,7 @@ const blogPosts: BlogPost[] = [
     author: "Sarah Okafor",
     date: "March 15, 2023",
     excerpt: "Learn the strategies and tips for building a profitable real estate investment portfolio.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Investment",
   },
   {
@@ -211,7 +211,7 @@ const blogPosts: BlogPost[] = [
     author: "Michael Eze",
     date: "February 28, 2023",
     excerpt: "A comprehensive guide to understanding Return on Investment (ROI) in real estate.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Finance",
   },
   {
@@ -220,7 +220,7 @@ const blogPosts: BlogPost[] = [
     author: "Amina Ibrahim",
     date: "January 20, 2023",
     excerpt: "Discover how technology is transforming the real estate industry and investment landscape.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Technology",
   },
   {
@@ -229,7 +229,7 @@ const blogPosts: BlogPost[] = [
     author: "John Adeyemi",
     date: "December 10, 2022",
     excerpt: "A comparative analysis of real estate and stocks as investment options.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Investment",
   },
   {
@@ -238,7 +238,7 @@ const blogPosts: BlogPost[] = [
     author: "Sarah Okafor",
     date: "November 5, 2022",
     excerpt: "Explore the advantages and potential returns of investing in commercial real estate.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936530/Happy_New_Year_gnopmh.png",
     category: "Commercial",
   },
 ]

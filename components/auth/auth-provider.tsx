@@ -7,7 +7,8 @@ import { SessionProvider } from "next-auth/react"
 // Create a mock session for static export
 const mockSession = {
   data: null,
-  status: "unauthenticated"
+  status: "unauthenticated",
+  expires: "2099-01-01T00:00:00.000Z"
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -27,6 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // For static export, we need to disable auto session fetching
       refetchInterval={0}
       refetchOnWindowFocus={false}
+      refetchWhenOffline={false}
       session={mockSession}
     >
       {children}
