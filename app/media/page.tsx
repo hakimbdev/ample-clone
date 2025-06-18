@@ -110,7 +110,7 @@ const newsItems: NewsItem[] = [
     title: "MIH Launches New Residential Project in Lekki",
     date: "April 15, 2023",
     excerpt:
-      "MIH has launched a new residential project in Lekki, Lagos. The project, MIH Heights, offers luxury apartments with modern amenities.",
+      "MIH has launched a new residential project in Abuja. The project, MIH Heights, offers luxury apartments with modern amenities.",
     image: "/placeholder.svg?height=300&width=400",
   },
   {

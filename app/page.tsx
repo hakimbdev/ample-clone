@@ -179,7 +179,7 @@ const featuredProjects: Project[] = [
   {
     id: 1,
     title: "MIH Heights",
-    location: "Lekki, Lagos",
+    location: "Abuja",
     price: "₦50,000,000",
     image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936935/slider13_nsoeam.jpg",
     type: "Residential",
@@ -188,7 +188,7 @@ const featuredProjects: Project[] = [
   {
     id: 2,
     title: "MIH Towers",
-    location: "Victoria Island, Lagos",
+    location: "Abuja",
     price: "₦120,000,000",
     image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936932/slider6_caefcl.jpg",
     type: "Commercial",
@@ -197,7 +197,7 @@ const featuredProjects: Project[] = [
   {
     id: 3,
     title: "MIH Gardens",
-    location: "Ikoyi, Lagos",
+    location: "Abuja",
     price: "₦85,000,000",
     image: "https://res.cloudinary.com/dc5qncppu/image/upload/v1745936932/slider3_npg5xi.jpg",
     type: "Residential",
